@@ -1,0 +1,16 @@
+UML-Klassendiagram (z.B. mit draw.io)
+Namenskonventionen - done
+Schleifen (for, while, do while) - done
+Bedingte Anweisungen (If-Else, Case) - done
+Einsatz komplexer Datenstrukturen (z.B. multidimensionale Arrays, etc. ...)
+Klassen - done
+Zugriffskontrolle (private, protected, public) - done
+Vererbung - done
+Abstrakte Klassen, bzw. Interfaces - done
+Paketstruktur - done
+Exception Handling - done
+Javadoc Dokumentation
+Unit-Tests (z.B. mit JUnit, TestNG)
+Build-Tools (Ant, Maven, Gradle) - done
+Einbindung externer Java Bibliotheken - done
+User Tests
