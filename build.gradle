@@ -12,7 +12,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'src.GymApp'
+    mainClass = 'com.gymmanager.ui.GymApp'
 }
 
 java {
@@ -29,4 +29,8 @@ sourceSets {
             srcDirs = ['src']
         }
     }
+}
+
+run {
+    standardInput = System.in
 }
