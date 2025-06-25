@@ -5,6 +5,7 @@
 # Compiled output
 /out/
 /build/
+/lib/
 
 # Local database files
 *.db
