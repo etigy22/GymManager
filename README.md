@@ -44,6 +44,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 ---
 - `src/test/java/com/gymmanager/` – Unit and integration test classes
 ---
+- `uml/` – UML diagrams for visual representation of the system architecture
 - `gradle/wrapper/` – Gradle wrapper files \(should be tracked\)
 - `build.gradle` – Gradle build configuration
 - `gradlew`, `gradlew.bat` – Gradle wrapper scripts
