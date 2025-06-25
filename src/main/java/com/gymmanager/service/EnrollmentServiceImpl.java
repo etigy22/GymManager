@@ -1,13 +1,9 @@
 package com.gymmanager.service;
 
-import com.gymmanager.exception.ClassException;
-import com.gymmanager.exception.EnrollmentException;
-import com.gymmanager.exception.MemberException;
+import com.gymmanager.exception.*;
 import com.gymmanager.model.GymClass;
 import com.gymmanager.model.Member;
-import com.gymmanager.repository.EnrollmentRepository;
-import com.gymmanager.repository.ClassRepository;
-import com.gymmanager.repository.MemberRepository;
+import com.gymmanager.repository.*;
 
 import java.util.List;
 

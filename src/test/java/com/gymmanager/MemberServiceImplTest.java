@@ -1,8 +1,7 @@
-package com.gymmanager.service;
+package com.gymmanager;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 class MemberServiceImplTest {
 
     @Test

@@ -2,8 +2,8 @@ package com.gymmanager.ui;
 
 import com.gymmanager.repository.*;
 import com.gymmanager.service.*;
-import com.gymmanager.util.DatabaseInitializer;
-import com.gymmanager.util.DatabaseUtil;
+import com.gymmanager.util.*;
+
 
 import java.util.Scanner;
 
