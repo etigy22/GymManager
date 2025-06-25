@@ -9,7 +9,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 
 ### Prerequisites
 
-- Java 17 or higher
+- Java 21 or higher
 - Gradle (or use the included Gradle Wrapper)
 
 ### Build and Run
@@ -36,18 +36,21 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 
 ## Project Structure
 
-- `src/com/gymmanager/`
+- `src/main/java/com/gymmanager/`
     - `ui/` – User interface components and main application entry point
-    - `service/` – Business logic and service courses
-    - `repository/` – Data access and repository courses
+    - `service/` – Business logic and service classes
+    - `repository/` – Data access and repository classes
     - `model/` – Domain models and entities
-
-- `lib/` – SQLite
-- `gradle/` – Gradle wrapper files
+---
+- `src/test/java/com/gymmanager/` – Unit and integration test classes
+---
+- `gradle/wrapper/` – Gradle wrapper files \(should be tracked\)
 - `build.gradle` – Gradle build configuration
 - `gradlew`, `gradlew.bat` – Gradle wrapper scripts
-- `GymManager.iml` – IntelliJ IDEA project file
+- `.gitignore` – Git ignore rules
+- `README.md` – Project documentation
 
 ## Recommendations
 
 - This project was made in IntelliJ IDEA, so it is recommended to use it for the best experience.
+- Have a look at the UML diagram located in the `uml` folder.
