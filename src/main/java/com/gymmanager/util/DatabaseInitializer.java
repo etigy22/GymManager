@@ -24,9 +24,9 @@ public class DatabaseInitializer {
                 );
                 """;
 
-            String createClasses = """
-                CREATE TABLE IF NOT EXISTS gym_classes (
-                    class_id INTEGER PRIMARY KEY,
+            String createCourses = """
+                CREATE TABLE IF NOT EXISTS gym_courses (
+                    course_id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL,
                     instructor_first_name TEXT NOT NULL,
                     instructor_last_name TEXT NOT NULL,
@@ -37,18 +37,18 @@ public class DatabaseInitializer {
             String createEnrollments = """
                 CREATE TABLE IF NOT EXISTS enrollments (
                     member_id INTEGER,
-                    class_id INTEGER,
+                    course_id INTEGER,
                     FOREIGN KEY (member_id) REFERENCES members(member_id),
-                    FOREIGN KEY (class_id) REFERENCES gym_classes(class_id),
-                    PRIMARY KEY (member_id, class_id)
+                    FOREIGN KEY (course_id) REFERENCES gym_courses(course_id),
+                    PRIMARY KEY (member_id, course_id)
                 );
                 """;
 
             stmt.execute(createMembers);
             System.out.println("Members table created successfully");
 
-            stmt.execute(createClasses);
-            System.out.println("Classes table created successfully");
+            stmt.execute(createCourses);
+            System.out.println("Courses table created successfully");
 
             stmt.execute(createEnrollments);
             System.out.println("Enrollments table created successfully");

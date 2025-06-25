@@ -13,19 +13,19 @@ public class GymApp {
 
         // Create repositories
         MemberRepository memberRepository = new MemberRepositoryImpl();
-        ClassRepository classRepository = new ClassRepositoryImpl();
+        CourseRepository courseRepository = new CourseRepositoryImpl();
         EnrollmentRepository enrollmentRepository = new EnrollmentRepositoryImpl();
 
         // Create services
         MemberService memberService = new MemberServiceImpl(memberRepository);
-        ClassService classService = new ClassServiceImpl(classRepository);
+        CourseService courseService = new CourseServiceImpl(courseRepository);
         EnrollmentService enrollmentService = new EnrollmentServiceImpl(
-                enrollmentRepository, memberRepository, classRepository);
+                enrollmentRepository, memberRepository, courseRepository);
 
         // Create UI components
         Scanner scanner = new Scanner(System.in);
         MemberUI memberUI = new MemberUI(scanner, memberService);
-        ClassUI classUI = new ClassUI(scanner, classService, enrollmentService);
+        CourseUI courseUI = new CourseUI(scanner, courseService, enrollmentService);
 
         // Main menu loop
         boolean running = true;
@@ -33,7 +33,7 @@ public class GymApp {
         while (running) {
             System.out.println("--- Gym Manager ---");
             System.out.println("1. Manage Members");
-            System.out.println("2. Manage Classes");
+            System.out.println("2. Manage Courses");
             System.out.println("0. Exit");
             System.out.print("Select an option: ");
 
@@ -46,7 +46,7 @@ public class GymApp {
                         memberUI.showMenu();
                         break;
                     case 2:
-                        classUI.showMenu();
+                        courseUI.showMenu();
                         break;
                     case 0:
                         running = false;

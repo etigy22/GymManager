@@ -10,13 +10,13 @@ import java.util.List;
 public class EnrollmentRepositoryImpl implements EnrollmentRepository {
 
     @Override
-    public boolean isEnrolled(int memberId, int classId) {
+    public boolean isEnrolled(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT COUNT(*) FROM enrollments WHERE member_id = ? AND class_id = ?")) {
+                     "SELECT COUNT(*) FROM enrollments WHERE member_id = ? AND course_id = ?")) {
 
             stmt.setInt(1, memberId);
-            stmt.setInt(2, classId);
+            stmt.setInt(2, courseId);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next() && rs.getInt(1) > 0) {
@@ -29,13 +29,13 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
     }
 
     @Override
-    public void enrollMember(int memberId, int classId) {
+    public void enrollMember(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO enrollments (member_id, class_id) VALUES (?, ?)")) {
+                     "INSERT INTO enrollments (member_id, course_id) VALUES (?, ?)")) {
 
             stmt.setInt(1, memberId);
-            stmt.setInt(2, classId);
+            stmt.setInt(2, courseId);
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -44,31 +44,31 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
     }
 
     @Override
-    public void removeMember(int memberId, int classId) {
+    public void removeMember(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "DELETE FROM enrollments WHERE member_id = ? AND class_id = ?")) {
+                     "DELETE FROM enrollments WHERE member_id = ? AND course_id = ?")) {
 
             stmt.setInt(1, memberId);
-            stmt.setInt(2, classId);
+            stmt.setInt(2, courseId);
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected == 0) {
-                throw new RuntimeException("Member was not enrolled in this class");
+                throw new RuntimeException("Member was not enrolled in this course");
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error removing member from class: " + e.getMessage(), e);
+            throw new RuntimeException("Error removing member from course: " + e.getMessage(), e);
         }
     }
 
     @Override
-    public List<Member> getClassMembers(int classId, MemberRepository memberRepository) {
+    public List<Member> getCourseMembers(int courseId, MemberRepository memberRepository) {
         List<Member> members = new ArrayList<>();
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT member_id FROM enrollments WHERE class_id = ?")) {
+                     "SELECT member_id FROM enrollments WHERE course_id = ?")) {
 
-            stmt.setInt(1, classId);
+            stmt.setInt(1, courseId);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -79,7 +79,7 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error listing class members: " + e.getMessage(), e);
+            throw new RuntimeException("Error listing course members: " + e.getMessage(), e);
         }
         return members;
     }

@@ -14,7 +14,7 @@ class ClassServiceImpl {
   - ClassRepository repository
 }
 class ClassUI {
-  - ClassService classService
+  - ClassService courseService
   - Scanner scanner
   - EnrollmentService enrollmentService
 }
@@ -39,7 +39,7 @@ class EnrollmentService {
 class EnrollmentServiceImpl {
   - EnrollmentRepository enrollmentRepository
   - MemberRepository memberRepository
-  - ClassRepository classRepository
+  - ClassRepository courseRepository
 }
 class GymApp
 class GymClass {
@@ -82,11 +82,11 @@ ClassRepositoryImpl  ..>  GymClass : «create»
 ClassServiceImpl "1" *--> "repository 1" ClassRepository 
 ClassServiceImpl  ..>  ClassService 
 ClassServiceImpl  ..>  GymClass : «create»
-ClassUI "1" *--> "classService 1" ClassService 
+ClassUI "1" *--> "courseService 1" ClassService 
 ClassUI "1" *--> "enrollmentService 1" EnrollmentService 
 EnrollmentException  -->  ServiceException 
 EnrollmentRepositoryImpl  ..>  EnrollmentRepository 
-EnrollmentServiceImpl "1" *--> "classRepository 1" ClassRepository 
+EnrollmentServiceImpl "1" *--> "courseRepository 1" ClassRepository 
 EnrollmentServiceImpl "1" *--> "enrollmentRepository 1" EnrollmentRepository 
 EnrollmentServiceImpl  ..>  EnrollmentService 
 EnrollmentServiceImpl "1" *--> "memberRepository 1" MemberRepository 

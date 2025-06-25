@@ -6,14 +6,14 @@ public class EnrollmentException extends ServiceException {
     }
 
     public static class DuplicateEnrollmentException extends EnrollmentException {
-        public DuplicateEnrollmentException(int memberId, int classId) {
-            super("Member ID: " + memberId + " is already enrolled in class ID: " + classId);
+        public DuplicateEnrollmentException(int memberId, int courseId) {
+            super("Member ID: " + memberId + " is already enrolled in course ID: " + courseId);
         }
     }
 
     public static class EnrollmentNotAllowedException extends EnrollmentException {
         public EnrollmentNotAllowedException() {
-            super("Standard members cannot enroll in classes. Please upgrade to Premium membership.");
+            super("Standard members cannot enroll in courses. Please upgrade to Premium membership.");
         }
     }
 }

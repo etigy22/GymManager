@@ -1,7 +1,7 @@
 package com.gymmanager.service;
 
 import com.gymmanager.exception.*;
-import com.gymmanager.model.GymClass;
+import com.gymmanager.model.GymCourse;
 import com.gymmanager.model.Member;
 import com.gymmanager.repository.*;
 
@@ -10,19 +10,19 @@ import java.util.List;
 public class EnrollmentServiceImpl implements EnrollmentService {
     private final EnrollmentRepository enrollmentRepository;
     private final MemberRepository memberRepository;
-    private final ClassRepository classRepository;
+    private final CourseRepository courseRepository;
 
     public EnrollmentServiceImpl(
             EnrollmentRepository enrollmentRepository,
             MemberRepository memberRepository,
-            ClassRepository classRepository) {
+            CourseRepository courseRepository) {
         this.enrollmentRepository = enrollmentRepository;
         this.memberRepository = memberRepository;
-        this.classRepository = classRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
-    public void enrollMemberInClass(int memberId, int classId) {
+    public void enrollMemberInCourse(int memberId, int courseId) {
         // Check if member exists
         Member member = memberRepository.findById(memberId);
         if (member == null) {
@@ -34,54 +34,54 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             throw new EnrollmentException.EnrollmentNotAllowedException();
         }
 
-        // Check if class exists
-        GymClass gymClass = classRepository.findById(classId);
-        if (gymClass == null) {
-            throw new ClassException.ClassNotFoundException(classId);
+        // Check if course exists
+        GymCourse gymCourse = courseRepository.findById(courseId);
+        if (gymCourse == null) {
+            throw new CourseException.CourseNotFoundException(courseId);
         }
 
         // Check if already enrolled
-        if (enrollmentRepository.isEnrolled(memberId, classId)) {
-            throw new EnrollmentException.DuplicateEnrollmentException(memberId, classId);
+        if (enrollmentRepository.isEnrolled(memberId, courseId)) {
+            throw new EnrollmentException.DuplicateEnrollmentException(memberId, courseId);
         }
 
-        // Check class capacity
-        int currentEnrollment = classRepository.getEnrollmentCount(classId);
-        if (currentEnrollment >= gymClass.getMaxCapacity()) {
-            throw new ClassException.ClassFullException(classId);
+        // Check course capacity
+        int currentEnrollment = courseRepository.getEnrollmentCount(courseId);
+        if (currentEnrollment >= gymCourse.getMaxCapacity()) {
+            throw new CourseException.CourseFullException(courseId);
         }
 
         // Enroll member
-        enrollmentRepository.enrollMember(memberId, classId);
+        enrollmentRepository.enrollMember(memberId, courseId);
     }
 
     @Override
-    public void removeMemberFromClass(int memberId, int classId) {
+    public void removeMemberFromCourse(int memberId, int courseId) {
         // Check if member exists
         Member member = memberRepository.findById(memberId);
         if (member == null) {
             throw new MemberException.MemberNotFoundException(memberId);
         }
 
-        // Check if class exists
-        GymClass gymClass = classRepository.findById(classId);
-        if (gymClass == null) {
-            throw new ClassException.ClassNotFoundException(classId);
+        // Check if course exists
+        GymCourse gymCourse = courseRepository.findById(courseId);
+        if (gymCourse == null) {
+            throw new CourseException.CourseNotFoundException(courseId);
         }
 
         // Remove enrollment
-        enrollmentRepository.removeMember(memberId, classId);
+        enrollmentRepository.removeMember(memberId, courseId);
     }
 
     @Override
-    public List<Member> getClassMembers(int classId) {
-        // Check if class exists
-        GymClass gymClass = classRepository.findById(classId);
-        if (gymClass == null) {
-            throw new ClassException.ClassNotFoundException(classId);
+    public List<Member> getCourseMembers(int courseId) {
+        // Check if course exists
+        GymCourse gymCourse = courseRepository.findById(courseId);
+        if (gymCourse == null) {
+            throw new CourseException.CourseNotFoundException(courseId);
         }
 
-        return enrollmentRepository.getClassMembers(classId, memberRepository);
+        return enrollmentRepository.getCourseMembers(courseId, memberRepository);
     }
 
     @Override
