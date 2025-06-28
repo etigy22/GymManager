@@ -1,0 +1,6 @@
+com.gymmanager.exception
+com.gymmanager.model
+com.gymmanager.repository
+com.gymmanager.service
+com.gymmanager.ui
+com.gymmanager.util

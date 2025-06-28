@@ -6,9 +6,12 @@ import com.gymmanager.util.DatabaseUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Implementation of the EnrollmentRepository interface for managing enrollments in gym courses.
+ * Provides methods to check enrollment status, enroll or remove members, and retrieve course members.
+ */
 public class MemberRepositoryImpl implements MemberRepository {
-
+    /** Retrieves all members from the database. */
     @Override
     public List<Member> findAll() {
         List<Member> members = new ArrayList<>();
@@ -30,7 +33,7 @@ public class MemberRepositoryImpl implements MemberRepository {
         }
         return members;
     }
-
+    /** Finds a member by their ID. */
     @Override
     public Member findById(int memberId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -52,7 +55,7 @@ public class MemberRepositoryImpl implements MemberRepository {
         }
         return null;
     }
-
+    /** Checks if a member exists by their first and last name. */
     @Override
     public boolean existsByName(String firstName, String lastName) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -72,7 +75,7 @@ public class MemberRepositoryImpl implements MemberRepository {
         }
         return false;
     }
-
+    /** Saves a new member to the repository. */
     @Override
     public void save(Member member) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -88,7 +91,7 @@ public class MemberRepositoryImpl implements MemberRepository {
             throw new RuntimeException("Error adding member: " + e.getMessage(), e);
         }
     }
-
+    /** Updates an existing member's details in the repository. */
     @Override
     public void update(int memberId, String firstName, String lastName, String membershipType) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -108,7 +111,7 @@ public class MemberRepositoryImpl implements MemberRepository {
             throw new RuntimeException("Error updating member: " + e.getMessage(), e);
         }
     }
-
+    /** Deletes a member from the repository by their ID. */
     @Override
     public void delete(int memberId) {
         try (Connection conn = DatabaseUtil.getConnection();

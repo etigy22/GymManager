@@ -6,9 +6,12 @@ import com.gymmanager.util.DatabaseUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Implementation of CourseRepository for managing gym courses in the repository.
+ * Provides methods to perform CRUD operations on GymCourse entities.
+ */
 public class CourseRepositoryImpl implements CourseRepository {
-
+    /** Default constructor. */
     @Override
     public List<GymCourse> findAll() {
         List<GymCourse> courses = new ArrayList<>();
@@ -31,7 +34,7 @@ public class CourseRepositoryImpl implements CourseRepository {
         }
         return courses;
     }
-
+    /** Finds a gym course by its ID. */
     @Override
     public GymCourse findById(int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -54,7 +57,7 @@ public class CourseRepositoryImpl implements CourseRepository {
         }
         return null;
     }
-
+    /** Saves a new gym course to the repository.*/
     @Override
     public void save(GymCourse gymCourse) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -71,7 +74,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             throw new RuntimeException("Error adding course: " + e.getMessage(), e);
         }
     }
-
+    /** Updates an existing gym course in the repository. */
     @Override
     public void update(int courseId, String name, String instructorFirstName, String instructorLastName, int maxCapacity) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -92,7 +95,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             throw new RuntimeException("Error updating course: " + e.getMessage(), e);
         }
     }
-
+    /** Deletes a gym course from the repository. */
     @Override
     public void delete(int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -108,7 +111,7 @@ public class CourseRepositoryImpl implements CourseRepository {
             throw new RuntimeException("Error removing course: " + e.getMessage(), e);
         }
     }
-
+    /** Gets the number of enrollments for a specific course. */
     @Override
     public int getEnrollmentCount(int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();

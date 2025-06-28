@@ -6,9 +6,12 @@ import com.gymmanager.util.DatabaseUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Implementation of the EnrollmentRepository interface for managing enrollments in gym courses.
+ * Provides methods to check enrollment status, enroll or remove members, and retrieve course members.
+ */
 public class EnrollmentRepositoryImpl implements EnrollmentRepository {
-
+    /** Checks if a member is enrolled in a specific course. */
     @Override
     public boolean isEnrolled(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -27,7 +30,7 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
         }
         return false;
     }
-
+    /** Enrolls a member in a specific course. */
     @Override
     public void enrollMember(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -42,7 +45,7 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
             throw new RuntimeException("Error enrolling member: " + e.getMessage(), e);
         }
     }
-
+    /** Removes a member from a specific course. */
     @Override
     public void removeMember(int memberId, int courseId) {
         try (Connection conn = DatabaseUtil.getConnection();
@@ -60,7 +63,7 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
             throw new RuntimeException("Error removing member from course: " + e.getMessage(), e);
         }
     }
-
+    /** Retrieves a list of members enrolled in a specific course. */
     @Override
     public List<Member> getCourseMembers(int courseId, MemberRepository memberRepository) {
         List<Member> members = new ArrayList<>();

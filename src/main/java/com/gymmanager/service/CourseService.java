@@ -3,7 +3,10 @@ package com.gymmanager.service;
 import com.gymmanager.model.GymCourse;
 
 import java.util.List;
-
+/**
+ * Interface for managing gym courses.
+ * Provides methods to perform CRUD operations on GymCourse entities.
+ */
 public interface CourseService {
     List<GymCourse> getAllCourses();
 

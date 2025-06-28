@@ -6,16 +6,19 @@ import com.gymmanager.service.MemberService;
 
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * MemberUI class provides a user interface for managing gym members.
+ * It allows adding, updating, removing, and listing members.
+ */
 public class MemberUI {
     private final Scanner scanner;
     private final MemberService memberService;
-
+    /** Constructor for MemberUI. */
     public MemberUI(Scanner scanner, MemberService memberService) {
         this.scanner = scanner;
         this.memberService = memberService;
     }
-
+    /** Displays the member management menu and handles user input. */
     public void showMenu() {
         boolean back = false;
         System.out.println();

@@ -8,18 +8,22 @@ import com.gymmanager.service.EnrollmentService;
 
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * CourseUI class provides a user interface for managing gym courses.
+ * It allows users to add, update, remove, and list courses,
+ * as well as enroll and remove members from courses.
+ */
 public class CourseUI {
     private final Scanner scanner;
     private final CourseService courseService;
     private final EnrollmentService enrollmentService;
-
+    /** Constructor to initialize CourseUI with necessary services. */
     public CourseUI(Scanner scanner, CourseService courseService, EnrollmentService enrollmentService) {
         this.scanner = scanner;
         this.courseService = courseService;
         this.enrollmentService = enrollmentService;
     }
-
+    /** Displays the course management menu and handles user input. */
     public void showMenu() {
         boolean back = false;
         System.out.println();
@@ -206,24 +210,20 @@ public class CourseUI {
                 return;
             }
 
-            // Display members
             System.out.println("Current Members:");
             for (Member member : members) {
                 System.out.println(member);
             }
 
-            // Display courses
             System.out.println();
             displayCourses(courses);
 
-            // Get member ID and course ID
             System.out.print("\nEnter member ID: ");
             int memberId = scanner.nextInt();
             System.out.print("Enter course ID: ");
             int courseId = scanner.nextInt();
             scanner.nextLine();
 
-            // Enroll member in course
             enrollmentService.enrollMemberInCourse(memberId, courseId);
             System.out.println("Successfully enrolled member in course.");
         } catch (Exception e) {
@@ -234,7 +234,6 @@ public class CourseUI {
 
     private void removeMemberFromCourse() {
         try {
-            // Get all courses
             List<GymCourse> courses = courseService.getAllCourses();
             if (courses.isEmpty()) {
                 System.out.println("No courses available.");
@@ -242,15 +241,12 @@ public class CourseUI {
                 return;
             }
 
-            // Display courses
             displayCourses(courses);
 
-            // Get the course ID
             System.out.print("\nEnter course ID: ");
             int courseId = scanner.nextInt();
             scanner.nextLine();
 
-            // Get members enrolled in this course
             List<Member> enrolledMembers = enrollmentService.getCourseMembers(courseId);
             if (enrolledMembers.isEmpty()) {
                 System.out.println("No members enrolled in this course.");
@@ -258,13 +254,11 @@ public class CourseUI {
                 return;
             }
 
-            // Show enrolled members
             System.out.println("\nMembers enrolled in this course:");
             for (Member member : enrolledMembers) {
                 System.out.println(member);
             }
 
-            // Get member ID to remove
             System.out.print("\nEnter member ID to remove from course: ");
             int memberId = scanner.nextInt();
             scanner.nextLine();

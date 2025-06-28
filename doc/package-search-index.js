@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.gymmanager.exception"},{"l":"com.gymmanager.model"},{"l":"com.gymmanager.repository"},{"l":"com.gymmanager.service"},{"l":"com.gymmanager.ui"},{"l":"com.gymmanager.util"}];updateSearchResults();

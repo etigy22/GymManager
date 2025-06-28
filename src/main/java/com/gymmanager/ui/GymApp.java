@@ -6,7 +6,10 @@ import com.gymmanager.util.*;
 
 
 import java.util.Scanner;
-
+/** * GymApp is the main entry point for the Gym Manager application.
+ * It initializes the database, creates repositories and services,
+ * and provides the main user interface for managing members and courses.
+ */
 public class GymApp {
     public static void main(String[] args) {
         DatabaseInitializer.initialize();
