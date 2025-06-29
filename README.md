@@ -3,8 +3,6 @@ Project by Noé, Felix, Etienne
 
 ## Introduction
 
-## Explanation
-
 Gym Manager is a Java application designed to help manage gym memberships, courses, and enrollments. The project is structured using a modular approach with repositories, services, and a user interface layer. It is built with Gradle for easy dependency management and building, and it uses SQLite for local data storage.
 
 ### Features
