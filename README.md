@@ -7,7 +7,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 
 ### Project Requirements
 
-- UML-Klassendiagram (z.B. mit draw.io) `/uml`
+- UML-Klassendiagramm (z.B. mit draw.io) `/uml`
 - Namenskonventionen `done`
 - Schleifen (for, while, do while) `done`
 - Bedingte Anweisungen (If-Else, Case) `done`
