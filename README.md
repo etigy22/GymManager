@@ -90,6 +90,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 - `gradlew`, `gradlew.bat` – Gradle wrapper scripts
 - `.gitignore` – Git ignore rules
 - `README.md` – Project documentation
+- `.gitattributes` – Git attributes for handling line endings and merge strategies
 
 ## Recommendations
 
