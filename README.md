@@ -62,7 +62,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 
 ### Running on Windows
 
-1. Ensure Java is installed and `JAVA_HOME` is set in your environment variables.
+1. Ensure Java is installed and `JAVA_HOME` is set in your local environment variables.
 2. Open Command Prompt.
 3. Run: `gradlew.bat build`
 
