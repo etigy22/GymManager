@@ -20,11 +20,11 @@ public class Member extends Person {
     public int getMemberId() {
         return memberId;
     }
-    /** Gets the first name of the member. */
+    /** Gets the type of membership for the member. */
     public String getMembershipType() {
         return membershipType;
     }
-    /** Gets the first name of the member. */
+    /** Member Information */
     @Override
     public String toString() {
         return "Member ID: " + memberId + ", Name: " + firstName + " " + lastName +
