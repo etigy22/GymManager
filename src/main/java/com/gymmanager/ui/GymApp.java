@@ -68,7 +68,11 @@ public class GymApp {
         scanner.close();
         System.out.println("Goodbye!");
     }
-
+    /**
+     * Prints the main menu options for the Gym Manager application.
+     * Displays options for managing members, courses, and exiting the application.
+     * The Multi-dimensional array is used to store menu options for easy expansion in the future.
+     */
     private static void printMenuOptions() {
         String[][] menuOptions = {
                 {"1", "Manage Members"},
