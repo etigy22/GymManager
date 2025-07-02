@@ -11,7 +11,7 @@ Gym Manager is a Java application designed to help manage gym memberships, cours
 - Namenskonventionen `done`
 - Schleifen (for, while, do while) `done`
 - Bedingte Anweisungen (If-Else, Case) `done`
-- Einsatz komplexer Datenstrukturen (z.B. multidimensionale Arrays, etc. ...) `src/main/java/com/gymmanager/repository`
+- Einsatz komplexer Datenstrukturen (z.B. multidimensionale Arrays, etc. ...) `src/main/java/com/gymmanager/ui/GymApp` oder `src/main/java/com/gymmanager/repository`
 - Klassen `done`
 - Zugriffskontrolle (private, protected, public) `done`
 - Vererbung `zB: src/main/java/com/gymmanager/ui`

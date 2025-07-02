@@ -34,11 +34,7 @@ public class GymApp {
         boolean running = true;
         System.out.println();
         while (running) {
-            System.out.println("--- Gym Manager ---");
-            System.out.println("1. Manage Members");
-            System.out.println("2. Manage Courses");
-            System.out.println("0. Exit");
-            System.out.print("Select an option: ");
+            printMenuOptions();
 
             try {
                 int choice = scanner.nextInt();
@@ -71,5 +67,18 @@ public class GymApp {
 
         scanner.close();
         System.out.println("Goodbye!");
+    }
+
+    private static void printMenuOptions() {
+        String[][] menuOptions = {
+                {"1", "Manage Members"},
+                {"2", "Manage Courses"},
+                {"0", "Exit"}
+        };
+        System.out.println("--- Gym Manager ---");
+        for (String[] option : menuOptions) {
+            System.out.printf("%s. %s%n", option[0], option[1]);
+        }
+        System.out.print("Select an option: ");
     }
 }
